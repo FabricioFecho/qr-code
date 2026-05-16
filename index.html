@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QR Code - Sopro da Terra</title>
+  <title>Sopro da Terra</title>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
@@ -14,41 +14,131 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      flex-direction: column;
-      font-family: Arial, sans-serif;
       background: #f4f4f4;
+      font-family: Arial, sans-serif;
     }
 
-    h1 {
-      margin-bottom: 20px;
+    .card {
+      background: white;
+      padding: 40px;
+      border-radius: 30px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      text-align: center;
+      position: relative;
+    }
+
+    .qr-wrapper {
+      position: relative;
+      width: 340px;
+      height: 340px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: white;
+      border-radius: 25px;
     }
 
     #qrcode {
+      z-index: 2;
+    }
+
+    .corner {
+      position: absolute;
+      width: 70px;
+      height: 70px;
+      border: 12px solid #6b1f1f;
+      border-radius: 25px;
+      z-index: 1;
+    }
+
+    .top-left {
+      top: -5px;
+      left: -5px;
+      border-right: none;
+      border-bottom: none;
+    }
+
+    .top-right {
+      top: -5px;
+      right: -5px;
+      border-left: none;
+      border-bottom: none;
+    }
+
+    .bottom-left {
+      bottom: -5px;
+      left: -5px;
+      border-right: none;
+      border-top: none;
+    }
+
+    .bottom-right {
+      bottom: -5px;
+      right: -5px;
+      border-left: none;
+      border-top: none;
+    }
+
+    .logo {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
       background: white;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+      border: 5px solid #E67E22;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      z-index: 3;
+      font-size: 34px;
+      font-weight: bold;
+      color: #6b1f1f;
+    }
+
+    h1 {
+      margin-top: 30px;
+      font-size: 42px;
+      color: #3a2a20;
     }
 
     p {
-      margin-top: 20px;
-      color: #555;
+      color: #666;
+      margin-top: 10px;
     }
   </style>
 </head>
 <body>
 
-  <h1>QR Code - Sopro da Terra</h1>
+  <div class="card">
 
-  <div id="qrcode"></div>
+    <div class="qr-wrapper">
 
-  <p>Escaneie para acessar o site</p>
+      <div class="corner top-left"></div>
+      <div class="corner top-right"></div>
+      <div class="corner bottom-left"></div>
+      <div class="corner bottom-right"></div>
+
+      <div id="qrcode"></div>
+
+      <div class="logo">S</div>
+
+    </div>
+
+    <h1>Sopro da Terra</h1>
+
+    <p>Escaneie para acessar o site</p>
+
+  </div>
 
   <script>
     new QRCode(document.getElementById("qrcode"), {
       text: "https://sopro-da-terra.onrender.com",
       width: 300,
-      height: 300
+      height: 300,
+      colorDark: "#E67E22",
+      colorLight: "#ffffff",
+      correctLevel: QRCode.CorrectLevel.H
     });
   </script>
 
